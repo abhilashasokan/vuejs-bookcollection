@@ -57,7 +57,7 @@
 <script>
 import HelloWorld from "./components/HelloWorld";
 import Firebase from "firebase";
-// import toastr from 'toastr';
+import toastr from 'toastr';
 
 
 var config = {
@@ -90,12 +90,15 @@ export default {
   methods: {
     addBook: function () {
       booksRef.push(this.newBook);
-      this.newBook.title = '';
-      this.newBook.author = '';
-      this.newBook.url = 'http://';
+      this.newBook.title = ''
+      this.newBook.author = ''
+      this.newBook.url = 'http://'
+      toastr.success('Book added successfully')
+
     },
     removeBook: function(book){
       booksRef.child(book['.key']).remove();
+      toastr.success('Book removed successfully')
     }
   },
 };
